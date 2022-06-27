@@ -1,0 +1,45 @@
+How to provide path to html file in sendFile() ?
+
+We import the path core module of node.js.
+
+const path = require(‘path’);
+
+path has a join function . __dirname is a global variable which holds the actual path to project main folder.
+
+path.join(__dirname, ‘views’, ‘add-user.html’); This will refer to the actual file location of add-user html code.
+
+Example:
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{background: skyblue; font-family:Verdana, Geneva, Tahoma, sans-serif}
+<h1>welcpme to the awesome website on the net</h1>
+<p>you wont find a website better anywhere else!</p>
+</style>
+</head>
+</html>
+
+HTML Files2 :-
+varhttp = require('http');
+// Create a server object
+http.createServer(function(req, res) {
+// http header
+res.writeHead(200,{'Content-Type': 'text/html'});
+varurl = req.url;
+if(url==='/about'){
+res.write(' Welcome to about us page');
+res.end();
+}
+elseif(url==='/contact'){
+res.write(' Welcome to contact us page');
+res.end();
+}
+else{
+res.write('Hello World!');
+res.end();
+}
+}).listen(3000,function(){
+// The server object listens on port 3000
+console.log("server start at port 3000");
+});
